@@ -29,4 +29,9 @@ result=${SSM_VALUE//$find/$replace}
 echo $replace
 curl -d "$result" -H "Content-Type: application/json" -X GET http://localhost:8080/integration/integrate
 
+replace="BUSINESS_PARTNER"
+result=${SSM_VALUE//$find/$replace}
+echo $replace
+curl -d "$result" -H "Content-Type: application/json" -X GET http://localhost:8080/integration/integrate
+
 echo Script completed!
