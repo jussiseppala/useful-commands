@@ -10,17 +10,4 @@ result=${SSM_VALUE//$find/$replace}
 echo $replace
 curl -d "$result" -H "Content-Type: application/json" -X GET http://localhost:8080/integration/integrate
 
-
-echo Integration script completed! Still check status.
-
-
-statusinfo=$(curl -X GET http://localhost:8080/integration/integration-status/INVOICE)
-if [ $statusinfo == 'In progress']
-then
-	echo Schedule running in one minute to be sure
-	sudo at now + 1 minute -f ssm_integratecall.sh
-else
-	echo Integration done successfully
-fi
-
 echo Script completed!
